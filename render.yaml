@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: finance-backend
+    runtime: node
+    buildCommand: npm install && npx prisma generate
+    startCommand: node src/app.js
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: JWT_EXPIRES_IN
+        value: 24h
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
