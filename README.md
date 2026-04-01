@@ -2,6 +2,14 @@
 
 A production-quality Node.js + Express backend for a finance dashboard system with **role-based access control**, **financial record management**, and **analytics dashboard APIs**.
 
+## 🧪 Quick Test Credentials (Seeded Data)
+
+| Role | Email | Password |
+|------|-------|----------|
+| Admin | admin@finance.com | password123 |
+| Analyst | analyst@finance.com | password123 |
+| Viewer | viewer@finance.com | password123 |
+
 ## 🏗️ Architecture
 
 This project follows industry-standard backend architecture patterns:
@@ -154,14 +162,6 @@ Open [http://localhost:3000/api-docs](http://localhost:3000/api-docs) for the in
 | GET | `/api/health` | Health check |
 | GET | `/api-docs` | Swagger UI |
 | GET | `/api-docs.json` | Raw OpenAPI spec |
-
-## 🧪 Test Credentials (After Seeding)
-
-| Role | Email | Password |
-|------|-------|----------|
-| Admin | admin@finance.com | password123 |
-| Analyst | analyst@finance.com | password123 |
-| Viewer | viewer@finance.com | password123 |
 
 ## 🔒 Security Features
 
