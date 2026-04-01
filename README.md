@@ -107,20 +107,20 @@ Open [http://localhost:3000/api-docs](http://localhost:3000/api-docs) for the in
 | Permission | Viewer | Analyst | Admin |
 |-----------|--------|---------|-------|
 | View records | ✅ | ✅ | ✅ |
-| Dashboard summaries | ❌ | ✅ | ✅ |
-| Create/update records | ❌ | ❌ | ✅ |
-| Delete records | ❌ | ❌ | ✅ |
-| Manage users | ❌ | ❌ | ✅ |
+| Dashboard summaries | — | ✅ | ✅ |
+| Create/update records | — | — | ✅ |
+| Delete records | — | — | ✅ |
+| Manage users | — | — | ✅ |
 
 ## 📡 API Endpoints
 
 ### Authentication
 | Method | Endpoint | Auth | Description |
 |--------|----------|------|-------------|
-| POST | `/api/auth/register` | ❌ | Register a new user |
-| POST | `/api/auth/login` | ❌ | Login and get JWT token |
-| GET | `/api/auth/me` | ✅ | Get current user profile |
-| PATCH | `/api/auth/profile` | ✅ | Update own profile |
+| POST | `/api/auth/register` | No | Register a new user |
+| POST | `/api/auth/login` | No | Login and get JWT token |
+| GET | `/api/auth/me` | Yes | Get current user profile |
+| PATCH | `/api/auth/profile` | Yes | Update own profile |
 
 ### User Management (Admin Only)
 | Method | Endpoint | Permission | Description |
