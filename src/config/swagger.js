@@ -12,12 +12,6 @@ const options = {
         name: 'API Support',
       },
     },
-    servers: [
-      {
-        url: '/',
-        description: 'Auto-detected host',
-      },
-    ],
     components: {
       securitySchemes: {
         bearerAuth: {

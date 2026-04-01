@@ -22,19 +22,34 @@ app.use(requestLogger);
 app.use(rateLimitMiddleware);
 
 // ─── Swagger Documentation ───────────────────────────────────────────────────
-app.use(
-  '/api-docs',
-  swaggerUi.serve,
-  swaggerUi.setup(swaggerSpec, {
+// Dynamically inject the correct server URL based on the actual request host
+app.use('/api-docs', swaggerUi.serve, (req, res, next) => {
+  const protocol = req.headers['x-forwarded-proto'] || req.protocol;
+  const host = req.headers.host;
+  const serverUrl = `${protocol}://${host}`;
+
+  const dynamicSpec = {
+    ...swaggerSpec,
+    servers: [{ url: serverUrl, description: 'Current server' }],
+  };
+
+  swaggerUi.setup(dynamicSpec, {
     customCss: '.swagger-ui .topbar { display: none }',
     customSiteTitle: 'Finance Dashboard API Docs',
-  })
-);
+  })(req, res, next);
+});
 
-// Expose raw spec for Postman / other tools
+// Expose raw spec for Postman / other tools (also dynamic)
 app.get('/api-docs.json', (req, res) => {
+  const protocol = req.headers['x-forwarded-proto'] || req.protocol;
+  const host = req.headers.host;
+  const serverUrl = `${protocol}://${host}`;
+
   res.setHeader('Content-Type', 'application/json');
-  res.send(swaggerSpec);
+  res.send({
+    ...swaggerSpec,
+    servers: [{ url: serverUrl, description: 'Current server' }],
+  });
 });
 
 // ─── API Routes ───────────────────────────────────────────────────────────────
