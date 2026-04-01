@@ -14,13 +14,8 @@ const options = {
     },
     servers: [
       {
-        url: 'http://localhost:{port}',
-        description: 'Development server',
-        variables: {
-          port: {
-            default: '3000',
-          },
-        },
+        url: '/',
+        description: 'Auto-detected host',
       },
     ],
     components: {
